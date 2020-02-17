@@ -10,19 +10,16 @@ public class Baseball {
     static final int CONTINUE_VALUE = 1;
     static final int EXIT_VALUE = 2;
     static final int INITIAL_VALUE = 0;
-    static final String INITIAL_MESSAGE = "";
 
     private List<Integer> playerInput;
     private List<Integer> answer;
     private int strike;
     private int ball;
-    private String resultMessage;
 
     Baseball() {
         makeRandomDigit();
         strike = 0;
         ball = 0;
-        resultMessage = "";
     }
 
     private void makeRandomDigit() {
@@ -37,7 +34,7 @@ public class Baseball {
         }
     }
 
-    public void createResult() {
+    public Result createResult() {
         clean();
         for (int i = 0; i < DIGIT; i++) {
             if (playerInput.get(i) == answer.get(i)) {
@@ -47,34 +44,13 @@ public class Baseball {
             if (answer.contains(playerInput.get(i)))
                 ball++;
         }
-        setResultMessage();
+
+        return new Result(strike, ball, DIGIT);
     }
 
     public void clean() {
         strike = INITIAL_VALUE;
         ball = INITIAL_VALUE;
-        resultMessage = INITIAL_MESSAGE;
-    }
-
-    public String getResultMessage() {
-        return resultMessage;
-    }
-
-    private void setResultMessage() {
-        StringBuilder resultMessage = new StringBuilder();
-
-        if (strike == 0 && ball == 0)
-            resultMessage.append("낫씽");
-        if (strike > 0)
-            resultMessage.append(strike + "스트라이크 ");
-        if (ball > 0)
-            resultMessage.append(ball + "볼 ");
-
-        this.resultMessage = resultMessage.toString();
-    }
-
-    public int getStrike() {
-        return this.strike;
     }
 
     public void setInput(String input) {
