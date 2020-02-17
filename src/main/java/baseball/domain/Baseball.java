@@ -12,6 +12,8 @@ public class Baseball {
 
     // 자릿수
     static final int DIGIT_NUMBER = 3;
+    static final int CONTINUE_VALUE = 1;
+    static final int EXIT_VALUE = 2;
     static final int INITIAL_VALUE = 0;
     static final String INITIAL_MESSAGE = "";
 
