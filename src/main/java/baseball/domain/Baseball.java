@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Random;
 
 public class Baseball {
-
     static final int DIGIT = 3;
     static final int MENU_DIGIT = 1;
     static final int CONTINUE_VALUE = 1;
