@@ -10,7 +10,7 @@ public class GameLauncher {
             if (input.equals(String.valueOf(Baseball.EXIT_VALUE)))
                 break;
         }
-        System.out.println("게임이 종료되었습니다.");
+        InputView.close();
     }
 
     public static void startGame(){
@@ -18,13 +18,12 @@ public class GameLauncher {
 
         while (true) {
             game.setInput(InputView.getPlayerInput());
-            game.createResult();
-            System.out.println(game.getResultMessage());
+            Result result = game.createResult();
+            System.out.println(result.getResultMessage());
 
-            if(game.getStrike() == game.DIGIT) {
-                System.out.println(game.DIGIT + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            if(result.isCorrect())
                 break;
-            }
         }
     }
+
 }

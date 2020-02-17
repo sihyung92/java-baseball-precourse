@@ -4,16 +4,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Validator {
-    private String wrongMessage = "";
+    private StringBuilder wrongMessage = new StringBuilder();
 
-    public boolean baseBallPlayerInputValidate(String input) {
+    public boolean playerInputValidate(String input) {
         if (validStringLength(input, Baseball.DIGIT) && isDigit(input) && validOverlapAtOtherDigit(input)) {
             return true;
         }
         return false;
     }
 
-    public boolean baseBallSelectedMenuValidate(String input) {
+    public boolean selectedMenuValidate(String input) {
         if (validStringLength(input, Baseball.MENU_DIGIT) && isDigit(input) && validMenuNumber(input)) {
             return true;
         }
@@ -22,7 +22,7 @@ public class Validator {
 
     private boolean validStringLength(String input, int length) {
         if (input.length() != length) {
-            wrongMessage = "문자 길이가 올바르지 않습니다. 문자 길이는 " + length + "글자입니다.";
+            wrongMessage.append("문자 길이가 올바르지 않습니다. 문자 길이는 " + length + "글자입니다.");
             return false;
         }
         return true;
@@ -32,7 +32,7 @@ public class Validator {
     private boolean isDigit(String input) {
         for(char c : input.toCharArray())
             if(!Character.isDigit(c)){
-                wrongMessage = "숫자만 입력해주세요.";
+                wrongMessage.append("숫자만 입력해주세요.");
                 return false;
             }
         return true;
@@ -42,7 +42,7 @@ public class Validator {
         Set<Character> forCheckOverlap = new HashSet<>();
         for (char c : input.toCharArray()){
             if (!forCheckOverlap.add(c)) {
-                wrongMessage = "서로 다른 수를 입력해주세요.";
+                wrongMessage.append("서로 다른 수를 입력해주세요.");
                 return false;
             }
         }
@@ -54,12 +54,12 @@ public class Validator {
         if (Baseball.CONTINUE_VALUE == selectedNum || Baseball.EXIT_VALUE == selectedNum) {
             return true;
         }
-        wrongMessage = "올바른 메뉴 번호를 입력해주세요. 계속 -> " + Baseball.CONTINUE_VALUE + " 중단 ->" + Baseball.EXIT_VALUE;
+        wrongMessage.append("올바른 메뉴 번호를 입력해주세요. 계속 -> " + Baseball.CONTINUE_VALUE + " 중단 ->" + Baseball.EXIT_VALUE);
         return false;
     }
 
-    public void printWrongMessage() {
-        System.out.println(wrongMessage.toString());
+    public String getWrongMessage() {
+        return wrongMessage.toString();
     }
 
 }
