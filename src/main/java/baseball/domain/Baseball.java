@@ -5,13 +5,9 @@ import java.util.List;
 import java.util.Random;
 
 public class Baseball {
-    /*
-     * baseball 객체 -> 게임 로직만 담당, 게임에 필요한 필드 들과 메세지만 가지고 있으면 됨.
-     * 실행시키는 기능은 gameLauncher로 책임분리, 내용 출력부는 outputview로 책임 분리
-     * */
 
-    // 자릿수
-    static final int DIGIT_NUMBER = 3;
+    static final int DIGIT = 3;
+    static final int MENU_DIGIT = 1;
     static final int CONTINUE_VALUE = 1;
     static final int EXIT_VALUE = 2;
     static final int INITIAL_VALUE = 0;
@@ -33,7 +29,7 @@ public class Baseball {
     private void makeRandomDigit() {
         answer = new ArrayList<>();
         Random random = new Random();
-        while (answer.size() != DIGIT_NUMBER) {
+        while (answer.size() != DIGIT) {
             int x = random.nextInt(8) + 1;
             if (answer.contains(x)) {
                 continue;
@@ -44,7 +40,7 @@ public class Baseball {
 
     public void createResult() {
         clean();
-        for (int i = 0; i < DIGIT_NUMBER; i++) {
+        for (int i = 0; i < DIGIT; i++) {
             if (playerInput.get(i) == answer.get(i)) {
                 strike++;
                 continue;
