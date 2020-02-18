@@ -13,7 +13,7 @@ public class GameLauncher {
         InputView.close();
     }
 
-    public static void startGame(){
+    public static void startGame() {
         Baseball game = new Baseball();
 
         while (true) {
@@ -21,7 +21,7 @@ public class GameLauncher {
             Result result = game.createResult();
             System.out.println(result.getResultMessage());
 
-            if(result.isCorrect())
+            if (result.isCorrect())
                 break;
         }
     }

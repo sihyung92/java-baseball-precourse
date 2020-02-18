@@ -14,7 +14,7 @@ public class InputTest {
 
     @DisplayName("유저가 입력한 세자리 숫자 validate")
     @ParameterizedTest
-    @CsvSource(value = {"123,true", "111,false", "9999,false","문자열,false"})
+    @CsvSource(value = {"123,true", "111,false", "9999,false", "문자열,false"})
     void inputValidTest(String input, boolean expectedResult) {
         assertThat(validator.playerInputValidate(input)).isEqualTo(expectedResult);
     }
@@ -28,7 +28,7 @@ public class InputTest {
 
     @DisplayName("메뉴 선택값 validate")
     @ParameterizedTest
-    @CsvSource(value = {"1,true", "2,true", "3,false", "9999,false","문자열,false"})
+    @CsvSource(value = {"1,true", "2,true", "3,false", "9999,false", "문자열,false"})
     void menuValidTest(String input, boolean expectedResult) {
         assertThat(validator.selectedMenuValidate(input)).isEqualTo(expectedResult);
     }

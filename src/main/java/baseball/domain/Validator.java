@@ -30,8 +30,8 @@ public class Validator {
     }
 
     private boolean isDigit(String input) {
-        for(char c : input.toCharArray())
-            if(!Character.isDigit(c)){
+        for (char c : input.toCharArray())
+            if (!Character.isDigit(c)) {
                 wrongMessage.append("숫자만 입력해주세요.");
                 return false;
             }
@@ -40,7 +40,7 @@ public class Validator {
 
     private boolean validOverlapAtOtherDigit(String input) {
         Set<Character> forCheckOverlap = new HashSet<>();
-        for (char c : input.toCharArray()){
+        for (char c : input.toCharArray()) {
             if (!forCheckOverlap.add(c)) {
                 wrongMessage.append("서로 다른 수를 입력해주세요.");
                 return false;
