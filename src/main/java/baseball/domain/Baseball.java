@@ -48,7 +48,7 @@ public class Baseball {
         return new Result(strike, ball, DIGIT);
     }
 
-    public void clean() {
+    private void clean() {
         strike = INITIAL_VALUE;
         ball = INITIAL_VALUE;
     }

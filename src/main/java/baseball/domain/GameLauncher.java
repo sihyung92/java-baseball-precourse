@@ -5,9 +5,9 @@ public class GameLauncher {
         while (true) {
             startGame();
             String input = InputView.getSelectedMenu();
-            if (input.equals(String.valueOf(Baseball.CONTINUE_VALUE)))
+            if (isContinue(input))
                 continue;
-            if (input.equals(String.valueOf(Baseball.EXIT_VALUE)))
+            if (isExit(input))
                 break;
         }
         InputView.close();
@@ -26,4 +26,11 @@ public class GameLauncher {
         }
     }
 
+    private static boolean isContinue(String input) {
+        return input.equals(String.valueOf(Baseball.CONTINUE_VALUE));
+    }
+
+    private static boolean isExit(String input) {
+        return input.equals(String.valueOf(Baseball.EXIT_VALUE));
+    }
 }
