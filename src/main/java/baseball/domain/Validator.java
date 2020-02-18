@@ -7,14 +7,14 @@ public class Validator {
     private StringBuilder wrongMessage = new StringBuilder();
 
     public boolean playerInputValidate(String input) {
-        if (validStringLength(input, Baseball.DIGIT) && isDigit(input) && validOverlapAtOtherDigit(input)) {
+        if (input != null && validStringLength(input, Baseball.DIGIT) && isDigit(input) && validOverlapAtOtherDigit(input)) {
             return true;
         }
         return false;
     }
 
     public boolean selectedMenuValidate(String input) {
-        if (validStringLength(input, Baseball.MENU_DIGIT) && isDigit(input) && validMenuNumber(input)) {
+        if (input != null && validStringLength(input, Baseball.MENU_DIGIT) && isDigit(input) && validMenuNumber(input)) {
             return true;
         }
         return false;
