@@ -22,7 +22,7 @@ public class InputView {
     public static String getSelectedMenu() {
         Validator validator = new Validator();
 
-        String message = "게임을 새로 시작하려면 " + Baseball.CONTINUE_VALUE + ", 종료하려면 " + Baseball.EXIT_VALUE + "를 입력하세요.";
+        String message = "게임을 새로 시작하려면 " + GameLauncher.CONTINUE_VALUE + ", 종료하려면 " + GameLauncher.EXIT_VALUE + "를 입력하세요.";
         String input = printMessageAndGetInput(message);
 
         while (!validator.selectedMenuValidate(input)) {

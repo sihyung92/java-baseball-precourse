@@ -51,10 +51,10 @@ public class Validator {
 
     public boolean validMenuNumber(String input) {
         int selectedNum = Integer.valueOf(input);
-        if (Baseball.CONTINUE_VALUE == selectedNum || Baseball.EXIT_VALUE == selectedNum) {
+        if (GameLauncher.CONTINUE_VALUE == selectedNum || GameLauncher.EXIT_VALUE == selectedNum) {
             return true;
         }
-        wrongMessage.append("올바른 메뉴 번호를 입력해주세요. 계속 -> " + Baseball.CONTINUE_VALUE + " 중단 ->" + Baseball.EXIT_VALUE);
+        wrongMessage.append("올바른 메뉴 번호를 입력해주세요. 계속 -> " + GameLauncher.CONTINUE_VALUE + " 중단 ->" + GameLauncher.EXIT_VALUE);
         return false;
     }
 
