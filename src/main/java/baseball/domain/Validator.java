@@ -20,7 +20,7 @@ public class Validator {
         return false;
     }
 
-    private boolean validStringLength(String input, int length) {
+    public boolean validStringLength(String input, int length) {
         if (input.length() != length) {
             wrongMessage.append("문자 길이가 올바르지 않습니다. 문자 길이는 " + length + "글자입니다.");
             return false;
@@ -29,7 +29,7 @@ public class Validator {
 
     }
 
-    private boolean isDigit(String input) {
+    public boolean isDigit(String input) {
         for (char c : input.toCharArray())
             if (!Character.isDigit(c)) {
                 wrongMessage.append("숫자만 입력해주세요.");
@@ -38,7 +38,7 @@ public class Validator {
         return true;
     }
 
-    private boolean validOverlapAtOtherDigit(String input) {
+    public boolean validOverlapAtOtherDigit(String input) {
         Set<Character> forCheckOverlap = new HashSet<>();
         for (char c : input.toCharArray()) {
             if (!forCheckOverlap.add(c)) {
@@ -49,7 +49,7 @@ public class Validator {
         return true;
     }
 
-    private boolean validMenuNumber(String input) {
+    public boolean validMenuNumber(String input) {
         int selectedNum = Integer.valueOf(input);
         if (Baseball.CONTINUE_VALUE == selectedNum || Baseball.EXIT_VALUE == selectedNum) {
             return true;
