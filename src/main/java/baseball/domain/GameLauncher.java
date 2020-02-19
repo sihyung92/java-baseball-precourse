@@ -17,8 +17,7 @@ public class GameLauncher {
         Baseball game = new Baseball();
 
         while (true) {
-            game.setInput(InputView.getPlayerInput());
-            Result result = game.createResult();
+            Result result = game.createResult(InputView.getPlayerInput());
             System.out.println(result.getResultMessage());
 
             if (result.isCorrect())

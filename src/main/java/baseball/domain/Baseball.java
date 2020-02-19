@@ -11,19 +11,15 @@ public class Baseball {
     static final int EXIT_VALUE = 2;
     static final int INITIAL_VALUE = 0;
 
-    private List<Integer> playerInput;
-    private List<Integer> answer;
-    private int strike;
-    private int ball;
+    private BaseballNumber playerInput;
+    private BaseballNumber answer;
 
     Baseball() {
         makeRandomDigit();
-        strike = 0;
-        ball = 0;
     }
 
     private void makeRandomDigit() {
-        answer = new ArrayList<>();
+        List<Integer> answer = new ArrayList<>();
         Random random = new Random();
         while (answer.size() != DIGIT) {
             int x = random.nextInt(8) + 1;
@@ -32,10 +28,14 @@ public class Baseball {
             }
             answer.add(x);
         }
+
+        this.answer = new BaseballNumber(answer);
     }
 
-    public Result createResult() {
-        clean();
+    public Result createResult(String input) {
+        playerInput = new BaseballNumber(input);
+        int strike = INITIAL_VALUE;
+        int ball = INITIAL_VALUE;
         for (int i = 0; i < DIGIT; i++) {
             if (playerInput.get(i) == answer.get(i)) {
                 strike++;
@@ -44,25 +44,10 @@ public class Baseball {
             if (answer.contains(playerInput.get(i)))
                 ball++;
         }
-
         return new Result(strike, ball, DIGIT);
     }
 
-    private void clean() {
-        strike = INITIAL_VALUE;
-        ball = INITIAL_VALUE;
-    }
-
-    public void setInput(String input) {
-        this.playerInput = stringToList(input);
-    }
-
-    private List<Integer> stringToList(String input) {
-        char[] chars = input.toCharArray();
-        List<Integer> list = new ArrayList<>();
-        for (char i : chars) {
-            list.add(i - '0'); // 숫자 character를 int 값으로 변환
-        }
-        return list;
+    public String getAnswer() {
+        return answer.toString();
     }
 }
