@@ -11,9 +11,7 @@ public class RandomBaseballNumberGenerator {
         Random random = new Random();
         while (answer.size() != digit) {
             int x = random.nextInt(8) + 1;
-            if (answer.contains(x)) {
-                continue;
-            }
+            if (answer.contains(x)) continue;
             answer.add(x);
         }
         return new BaseballNumber(answer);
