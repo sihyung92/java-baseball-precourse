@@ -1,6 +1,9 @@
 package baseball.domain;
 
 public class GameLauncher {
+    static final int CONTINUE_VALUE = 1;
+    static final int EXIT_VALUE = 2;
+
     public static void main(String[] args) {
         while (true) {
             startGame();
@@ -26,10 +29,10 @@ public class GameLauncher {
     }
 
     private static boolean isContinue(String input) {
-        return input.equals(String.valueOf(Baseball.CONTINUE_VALUE));
+        return input.equals(String.valueOf(CONTINUE_VALUE));
     }
 
     private static boolean isExit(String input) {
-        return input.equals(String.valueOf(Baseball.EXIT_VALUE));
+        return input.equals(String.valueOf(EXIT_VALUE));
     }
 }

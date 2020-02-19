@@ -1,53 +1,53 @@
 package baseball.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 public class Baseball {
     static final int DIGIT = 3;
     static final int MENU_DIGIT = 1;
-    static final int CONTINUE_VALUE = 1;
-    static final int EXIT_VALUE = 2;
     static final int INITIAL_VALUE = 0;
 
     private BaseballNumber playerInput;
     private BaseballNumber answer;
+    private int strike;
+    private int ball;
 
-    Baseball() {
-        makeRandomDigit();
-    }
-
-    private void makeRandomDigit() {
-        List<Integer> answer = new ArrayList<>();
-        Random random = new Random();
-        while (answer.size() != DIGIT) {
-            int x = random.nextInt(8) + 1;
-            if (answer.contains(x)) {
-                continue;
-            }
-            answer.add(x);
-        }
-
-        this.answer = new BaseballNumber(answer);
+    private void makeAnswerIfNotNull() {
+        if (answer == null)
+            this.answer = RandomBaseballNumberGenerator.makeRandomBaseballNumber(DIGIT);
     }
 
     public Result createResult(String input) {
+        clean();
+        makeAnswerIfNotNull();
         playerInput = new BaseballNumber(input);
-        int strike = INITIAL_VALUE;
-        int ball = INITIAL_VALUE;
-        for (int i = 0; i < DIGIT; i++) {
-            if (playerInput.get(i) == answer.get(i)) {
-                strike++;
-                continue;
-            }
-            if (answer.contains(playerInput.get(i)))
-                ball++;
-        }
+        strike = calculateStrike(strike);
+        ball = calculateBall(ball);
         return new Result(strike, ball, DIGIT);
     }
 
-    public String getAnswer() {
-        return answer.toString();
+    public Result createResult(String input, BaseballNumber answer) {
+        this.answer = answer;
+        return createResult(input);
+    }
+
+    private void clean() {
+        strike = INITIAL_VALUE;
+        ball = INITIAL_VALUE;
+    }
+
+    private int calculateStrike(int strike) {
+        for (int i = 0; i < DIGIT; i++) {
+            if (playerInput.get(i) == answer.get(i))
+                strike++;
+        }
+        return strike;
+    }
+
+    private int calculateBall(int ball) {
+        for (int i = 0; i < DIGIT; i++) {
+            if (playerInput.get(i) == answer.get(i)) continue;
+            if (answer.contains(playerInput.get(i)))
+                ball++;
+        }
+        return ball;
     }
 }
