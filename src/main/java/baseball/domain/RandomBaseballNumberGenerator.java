@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class RandomBaseballNumberGenerator {
-    
+
     public static BaseballNumber makeRandomBaseballNumber(int digit) {
         List<Integer> answer = new ArrayList<>();
         Random random = new Random();
